@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Products - Beauty Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your existing CSS styles here */
+        .product-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            margin-bottom: 20px;
+        }
+
+        .product {
+            flex: 0 0 auto;
+            width: 200px; /* Adjust as needed */
+            margin-right: 10px;
+        }
+
+        /* Pink style */
+        .pink-text {
+            color: #ff69b4; /* Pink color */
+        }
+
+        /* Add media query for responsiveness */
+        @media screen and (max-width: 768px) {
+            .product {
+                width: 150px; /* Adjust as needed for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Your header code here -->
+</header>
+
+<section id="skincare-products">
+    <div class="container">
+        <h2 class="pink-text">Skincare Products</h2>
+        <!-- Add your skincare products slider here -->
+        <div class="product-slider">
+            <div class="product">
+                <img src="product1.jpg" alt="Product 1">
+                <h3 class="pink-text">Product 1</h3>
+                <p>$29.99</p>
+                <a href="product1.html" class="cta-button">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="product2.jpg" alt="Product 2">
+                <h3 class="pink-text">Product 2</h3>
+                <p>$19.99</p>
+                <a href="product2.html" class="cta-button">Add to Cart</a>
+            </div>
+            <!-- Add more skincare products here -->
+            <div class="product">
+                <img src="product3.jpg" alt="Product 3">
+                <h3 class="pink-text">Product 3</h3>
+                <p>$25.99</p>
+                <a href="product3.html" class="cta-button">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="product4.jpg" alt="Product 4">
+                <h3 class="pink-text">Product 4</h3>
+                <p>$22.99</p>
+                <a href="product4.html" class="cta-button">Add to Cart</a>
+            </div>
+            <!-- Add more products as needed -->
+        </div>
+    </div>
+</section>
+
+<footer>
+    <!-- Your footer code here -->
+</footer>
+
+<script>
+    // JavaScript for handling sliding functionality
+    window.onload = function() {
+        const slider = document.querySelector('.product-slider');
+        const products = document.querySelectorAll('.product');
+        let scrollAmount = 0;
+
+        // Set width of slider container
+        slider.style.width = (products.length * (products[0].offsetWidth + 10)) + 'px';
+
+        // Function to slide left
+        const slideLeft = function() {
+            if (scrollAmount > 0) {
+                scrollAmount -= products[0].offsetWidth + 10;
+                slider.scroll({
+                    top: 0,
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // Function to slide right
+        const slideRight = function() {
+            if (scrollAmount < slider.scrollWidth - slider.offsetWidth) {
+                scrollAmount += products[0].offsetWidth + 10;
+                slider.scroll({
+                    top: 0,
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // Add event listeners for left and right arrows
+        document.getElementById('slide-left').addEventListener('click', slideLeft);
+        document.getElementById('slide-right').addEventListener('click', slideRight);
+    };
+</script>
+
+</body>
+</html>
